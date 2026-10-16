@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Bio Site</title>
+<meta name="description" id="pageDesc" content="">
+<style>
+  :root{
+    --cor-principal:#0f2a43;
+    --cor-destaque:#c9a227;
+    --cor-fundo:#f5f2ec;
+    --cor-texto:#1c2733;
+    --cor-zap:#22c064;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cor-fundo);color:var(--cor-texto)}
+  .wrap{max-width:430px;margin:0 auto;min-height:100vh;background:#fff;box-shadow:0 0 24px rgba(0,0,0,.08);padding-bottom:110px}
+  .capa{background:linear-gradient(135deg,var(--cor-principal),#1d4066);padding:34px 20px 58px;text-align:center;color:#fff}
+  .foto-ring{width:118px;height:118px;margin:0 auto;border-radius:50%;border:3px solid var(--cor-destaque);background:#d9d2c2;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .foto-ring img{width:100%;height:100%;object-fit:cover;display:block}
+  .iniciais{font-size:40px;font-weight:700;color:var(--cor-principal)}
+  h1{font-size:24px;margin-top:14px;line-height:1.2}
+  .especialidade{color:var(--cor-destaque);font-weight:600;font-size:15px;margin-top:4px}
+  .cidade{opacity:.85;font-size:13px;margin-top:4px}
+  .estrelas{margin-top:8px;color:#f4b400;font-size:15px;letter-spacing:2px}
+  .estrelas small{color:#fff;opacity:.85;letter-spacing:0;font-size:12px;margin-left:6px}
+  .card{margin:-38px 16px 0;background:#fff;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.12);padding:18px;position:relative;z-index:2}
+  .btn-zap{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--cor-zap);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:16px;border-radius:12px}
+  .btn-zap svg{flex:none}
+  .atalhos{display:flex;gap:10px;margin-top:12px}
+  .atalhos a{flex:1;text-align:center;text-decoration:none;color:var(--cor-principal);border:1.5px solid #e3ded2;border-radius:12px;padding:11px 4px;font-size:13px;font-weight:600;background:#fbf9f5}
+  section{padding:22px 20px 4px}
+  h2{font-size:17px;color:var(--cor-principal);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--cor-destaque),transparent)}
+  .servico{display:flex;gap:12px;padding:13px 14px;border:1px solid #eee7d8;border-radius:12px;margin-bottom:10px;background:#fffdf8}
+  .servico .icone{font-size:22px;line-height:1.2}
+  .servico b{display:block;font-size:15px}
+  .servico span{font-size:13px;color:#5b6a78}
+  .sobre p{font-size:14.5px;line-height:1.55;color:#3c4a58}
+  .depo{border-left:3px solid var(--cor-destaque);background:#fbf9f5;border-radius:0 12px 12px 0;padding:12px 14px;margin-bottom:10px}
+  .depo p{font-size:14px;line-height:1.5;font-style:italic;color:#3c4a58}
+  .depo b{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--cor-principal)}
+  .info{font-size:14px;line-height:1.7;color:#3c4a58}
+  .fixo{position:fixed;left:0;right:0;bottom:0;z-index:10}
+  .fixo-inner{max-width:430px;margin:0 auto;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(6px);box-shadow:0 -4px 16px rgba(0,0,0,.10)}
+  footer{text-align:center;padding:26px 20px 8px;font-size:12px;color:#8b96a1}
+  .demo-badge{display:inline-block;background:#fdf3d7;color:#8a6d1a;border:1px solid #ecd28a;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:600;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="capa">
+    <div class="foto-ring" id="fotoRing"></div>
+    <h1 id="nome"></h1>
+    <div class="especialidade" id="especialidade"></div>
+    <div class="cidade" id="cidade"></div>
+    <div class="estrelas" id="estrelas"></div>
+  </header>
+
+  <div class="card">
+    <a class="btn-zap" id="btnZapTopo" href="#" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91A9.86 9.86 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.18.35-.58.35-1.07.24-1.18-.1-.1-.22-.16-.47-.29"/></svg>
+      <span id="btnZapTexto"></span>
+    </a>
+    <div class="atalhos">
+      <a id="lnkInsta" href="#" target="_blank" rel="noopener">📷 Instagram</a>
+      <a id="lnkMapa" href="#" target="_blank" rel="noopener">📍 Localização</a>
+      <a id="lnkEmail" href="#">✉️ E-mail</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>Serviços</h2>
+    <div id="servicos"></div>
+  </section>
+
+  <section class="sobre">
+    <h2>Sobre</h2>
+    <p id="sobre"></p>
+  </section>
+
+  <section>
+    <h2>O que dizem os clientes</h2>
+    <div id="depoimentos"></div>
+  </section>
+
+  <section>
+    <h2>Atendimento</h2>
+    <div class="info" id="atendimento"></div>
+  </section>
+
+  <footer>
+    <div class="demo-badge" id="demoBadge">PÁGINA DE DEMONSTRAÇÃO</div>
+    <div id="rodape"></div>
+  </footer>
+</div>
+
+<div class="fixo">
+  <div class="fixo-inner">
+    <a class="btn-zap" id="btnZapFixo" href="#" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91A9.86 9.86 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.18.35-.58.35-1.07.24-1.18-.1-.1-.22-.16-.47-.29"/></svg>
+      <span id="btnZapFixoTexto"></span>
+    </a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — personalize SOMENTE este bloco para cada cliente.
+   Nome, foto, serviços, depoimentos, WhatsApp e cores.
+   ============================================================ */
+const CONFIG = {
+  demo: true, // true = mostra o selo "demonstração"; false = página do cliente no ar
+  nome: "Dr. Rafael Almeida",
+  especialidade: "Advocacia de Família e Sucessões",
+  cidade: "São Paulo · SP — atendimento online para todo o Brasil",
+  foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+  avaliacao: "5.0 — 127 avaliações de clientes",
+  whatsapp: "5511999999999", // DDI+DDD+número do cliente
+  msgWhatsapp: "Olá, Dr. Rafael! Vim pelo seu site e gostaria de agendar uma consulta.",
+  btnTexto: "Agendar consulta no WhatsApp",
+  instagram: "https://instagram.com/",
+  mapa: "https://maps.google.com/?q=Av.+Paulista,+São+Paulo",
+  email: "contato@exemplo.adv.br",
+  cores: { principal: "#0f2a43", destaque: "#c9a227", fundo: "#f5f2ec" },
+  servicos: [
+    { icone: "👨‍👩‍👧", titulo: "Divórcio e guarda", desc: "Consensual ou litigioso, com acordo justo e rápido." },
+    { icone: "📜", titulo: "Inventário e herança", desc: "Inventário judicial e em cartório, sem dor de cabeça." },
+    { icone: "💍", titulo: "Pacto e união estável", desc: "Contratos e reconhecimentos com segurança jurídica." },
+    { icone: "⚖️", titulo: "Pensão alimentícia", desc: "Fixação, revisão e execução de alimentos." }
+  ],
+  sobre: "Advogado há mais de 10 anos, especialista em Direito de Família e Sucessões. Atendimento humanizado, linguagem simples e acompanhamento do seu caso do início ao fim — presencial em São Paulo ou online para todo o Brasil.",
+  depoimentos: [
+    { texto: "Resolveu meu inventário em poucos meses, sempre me mantendo informada. Recomendo de olhos fechados.", autor: "Mariana S. — cliente de inventário" },
+    { texto: "Atendimento impecável no meu divórcio. Cuidou de tudo e me poupou de muito estresse.", autor: "Carlos E. — cliente de divórcio" },
+    { texto: "Explicou cada etapa sem juridiquês. Senti segurança do começo ao fim.", autor: "Fernanda L. — cliente de guarda" }
+  ],
+  atendimento: "🕘 Segunda a sexta, das 9h às 18h<br>📍 Av. Paulista, 1000 — Bela Vista, São Paulo/SP<br>💻 Consultas online por videochamada",
+  rodape: "© 2026 Dr. Rafael Almeida — Advocacia. Todos os direitos reservados."
+};
+
+/* ===== Renderização (não precisa mexer) ===== */
+const $ = id => document.getElementById(id);
+document.title = CONFIG.nome + " — " + CONFIG.especialidade;
+$("pageDesc").content = CONFIG.especialidade + " — " + CONFIG.cidade;
+const r = document.documentElement.style;
+r.setProperty("--cor-principal", CONFIG.cores.principal);
+r.setProperty("--cor-destaque", CONFIG.cores.destaque);
+r.setProperty("--cor-fundo", CONFIG.cores.fundo);
+
+const iniciais = CONFIG.nome.replace(/^(Dr\.|Dra\.)\s*/,"").split(" ").filter(Boolean).slice(0,2).map(p=>p[0]).join("");
+$("fotoRing").innerHTML = CONFIG.foto
+  ? '<img src="' + CONFIG.foto + '" alt="Foto de ' + CONFIG.nome + '" onerror="this.remove()"><span class="iniciais" style="position:absolute;z-index:-1">' + iniciais + '</span>'
+  : '<span class="iniciais">' + iniciais + '</span>';
+$("nome").textContent = CONFIG.nome;
+$("especialidade").textContent = CONFIG.especialidade;
+$("cidade").textContent = CONFIG.cidade;
+$("estrelas").innerHTML = "★★★★★<small>" + CONFIG.avaliacao + "</small>";
+
+const linkZap = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.msgWhatsapp);
+$("btnZapTopo").href = linkZap;
+$("btnZapFixo").href = linkZap;
+$("btnZapTexto").textContent = CONFIG.btnTexto;
+$("btnZapFixoTexto").textContent = CONFIG.btnTexto;
+$("lnkInsta").href = CONFIG.instagram;
+$("lnkMapa").href = CONFIG.mapa;
+$("lnkEmail").href = "mailto:" + CONFIG.email;
+
+$("servicos").innerHTML = CONFIG.servicos.map(s =>
+  '<div class="servico"><div class="icone">' + s.icone + '</div><div><b>' + s.titulo + '</b><span>' + s.desc + '</span></div></div>'
+).join("");
+$("sobre").textContent = CONFIG.sobre;
+$("depoimentos").innerHTML = CONFIG.depoimentos.map(d =>
+  '<div class="depo"><p>"' + d.texto + '"</p><b>' + d.autor + "</b></div>"
+).join("");
+$("atendimento").innerHTML = CONFIG.atendimento;
+$("rodape").textContent = CONFIG.rodape;
+if (!CONFIG.demo) $("demoBadge").style.display = "none";
+</script>
+</body>
+</html>
